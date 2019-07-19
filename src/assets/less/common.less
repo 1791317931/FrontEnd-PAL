@@ -1,0 +1,82 @@
+@import '../../theme.less';
+
+ /* 设置滚动条的样式 */
+// ::-webkit-scrollbar {
+//   width:4px;
+//   background-color: #fff;
+// }
+
+// /* 滚动槽 */
+// ::-webkit-scrollbar-track {
+//   border-radius:0;
+// }
+
+// /* 滚动条滑块 */
+// ::-webkit-scrollbar-thumb {
+//   border-radius:0;
+//   background:black;
+// }
+
+.btn-container {
+  text-align: center;
+  button {
+    margin-left: 10px;
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+}
+
+.break-all {
+  word-break: break-all;
+}
+.required:before {
+  content: '*';
+  display: inline-block;
+  margin-right: 2px;
+  line-height: 1;
+  font-family: SimSun;
+  font-size: 12px;
+  color: #ed4014;
+}
+
+.clear:before, .clear:after, .clearfix:before, .clearfix:after {
+  content: ' ';
+  display: table;
+}
+.clear:after, .clearfix:after {
+  clear: both;
+}
+
+.hide {display: none;}
+
+.page-wrapper {
+  height: 64px;
+  position: relative;
+  .page-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.mb10 {margin-bottom: 10px;}
+.mt10 {margin-top: 10px;}
+.mt20 {margin-top: 20px;}
+.mt30 {margin-top: 30px;}
+
+.spin-wrapper{
+  position: relative;
+}
+
+.visible-table {
+  .ivu-table {
+    overflow: visible;
+    .visible-cell {
+      .ivu-table-cell {
+        overflow: visible;
+      }
+    }
+  }
+}
