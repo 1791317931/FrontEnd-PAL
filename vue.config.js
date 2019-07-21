@@ -33,7 +33,7 @@ module.exports = {
       .set('@c', resolve('src/components'))
       .set('@cf', resolve('src/components/FrameOwn'))
       .set('@u', resolve('src/utils'))
-      .set('@i', resolve('src/assets/images'))
+      .set('@i', resolve('src/assets/imgs'))
     // const types = ['vue-modules', 'vue', 'normal-modules', 'normal']
     // types.forEach(type => addStyleResource(config.module.rule('less').oneOf(type)))
   },

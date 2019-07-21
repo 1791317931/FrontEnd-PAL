@@ -13,7 +13,7 @@
         <div class="message">
           <img src="@i/loading.gif"></img>
         </div>
-        <div class="to-join">
+        <div class="to-join hide">
           <div>立即入驻</div>
         </div>
       </div>

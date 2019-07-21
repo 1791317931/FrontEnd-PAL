@@ -3,7 +3,9 @@
     <div class="header-container">
       <Header/>
     </div>
-    <router-view class="page-body"/>
+    <div class="page-body">
+      <router-view/>
+    </div>
     <div class="footer-container">
       <Footer/>
     </div>
@@ -34,18 +36,19 @@ export default {
 @import url('../theme.less');
 
 .front {
-  height: 100%;
-  min-width: 1340px;
-  background:rgba(246,246,246,1);
-  overflow-y: auto;
+  min-height: 100%;
+  min-width: @body-width;
+  background: @body-bg;
   .header-container {
     background: #fff;
     margin-bottom: -@header-height;
     position: relative;
   }
   .page-body {
+    width: @content-width;
     min-height: 100%;
-    padding: @header-height 0 @footer-height;
+    margin: 0 auto;
+    padding: @content-padding-top 0 @content-padding-bottom 0;
   }
   .footer-container {
     background: #23282D;
