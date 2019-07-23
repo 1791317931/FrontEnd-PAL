@@ -6,7 +6,7 @@
       </div>
       <div class="audient-info">京ICP备14007358号-1 / 京公网安备11010802014104号 / Powered by 2008-2019 UI.CN</div>
       <div class="logo">
-        <img src="@i/loading.gif"></img>
+        <img src="@i/site-info.png"></img>
       </div>
       <div class="qrcode">
         <div>

@@ -8,7 +8,7 @@
         <div class="title">
           <span>热门音乐</span>
           <div class="more">
-            <img class="arrow" src="@i/to-play.png"></img>
+            <img class="arrow" src="@i/arrow-right.png"></img>
           </div>
         </div>
         <div class="list clearfix">
@@ -96,7 +96,7 @@
         <div class="title">
           <span>热门音乐</span>
           <div class="more">
-            <img class="arrow" src="@i/to-play.png"></img>
+            <img class="arrow" src="@i/arrow-right.png"></img>
           </div>
         </div>
         <div class="list clearfix">
@@ -184,7 +184,7 @@
         <div class="title">
           <span>热门音乐</span>
           <div class="more">
-            <img class="arrow" src="@i/to-play.png"></img>
+            <img class="arrow" src="@i/arrow-right.png"></img>
           </div>
         </div>
         <div class="list clearfix">
@@ -272,7 +272,7 @@
         <div class="title">
           <span>热门音乐</span>
           <div class="more">
-            <img class="arrow" src="@i/to-play.png"></img>
+            <img class="arrow" src="@i/arrow-right.png"></img>
           </div>
         </div>
         <div class="article-list">
@@ -289,10 +289,10 @@
                 </div>
                 <div class="right-container">
                   <div class="comment">
-                    <img src="@i/to-play.png"></img>4032
+                    <img src="@i/comment.png"></img>4032
                   </div>
                   <div class="collection">
-                    <img src="@i/to-play.png"></img>4032
+                    <img src="@i/collection.png"></img>4032
                   </div>
                 </div>
               </div>
@@ -465,8 +465,11 @@ export default {
           position: relative;
           float: left;
           margin-left: 30px;
+          width: 230px;
+          &:hover {
+
+          }
           .cover {
-            width: 230px;
             height: 230px;
             position: relative;
             cursor: pointer;
@@ -578,7 +581,7 @@ export default {
                 > div {
                   float: left;
                   position: relative;
-                  padding: 0 0 0 30px;
+                  padding: 0 0 0 35px;
                   &:not(:first-child) {
                     margin-left: 40px;
                   }
@@ -587,8 +590,8 @@ export default {
                     left: 0;
                     top: 50%;
                     transform: translateY(-50%);
-                    width:21px;
-                    height: 21px;
+                    width: 28px;
+                    height: 28px;
                   }
                 }
               }

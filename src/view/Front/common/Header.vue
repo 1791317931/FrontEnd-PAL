@@ -1,6 +1,6 @@
 <template>
   <div class="header">
-    <img class="logo" src="@i/loading.gif"></img>
+    <img class="logo" src="@i/logo.png"></img>
     <div class="nav">
       <div v-for="(item, index) in navList" :key="index" :class="currentRouter === item.path ? 'acitve' : ''" @click="toggleNav(item)">{{ item.text }}</div>
     </div>
@@ -8,10 +8,10 @@
       <img class="avatar" src="@i/loading.gif"></img>
       <div class="user-operation clearfix">
         <div class="upload">
-          <img src="@i/loading.gif"></img>
+          <img src="@i/upload.png"></img>
         </div>
         <div class="message">
-          <img src="@i/loading.gif"></img>
+          <img src="@i/email.png"></img>
         </div>
         <div class="to-join hide">
           <div>立即入驻</div>
