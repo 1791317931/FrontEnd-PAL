@@ -1,0 +1,27 @@
+
+
+// font color
+@text: '';
+
+// border color
+@border: '';
+
+// bg color
+@bg-header: #ffffff;
+@bg-body: #F6F6F6;
+@bg-footer: #F6F6F6;
+
+// mixins
+.size(@width, @height) {
+    width: @width;
+    height: @height;
+}
+.square(@size) {
+    .size(@size, @size)
+}
+
+.bg-size(@size: contain) {
+    background-size: @size;
+    background-repeat: no-repeat;
+    background-position: center;
+}
