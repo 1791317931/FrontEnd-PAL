@@ -6,6 +6,13 @@
                 <span class="play-btn"></span>
             </span>  
         </div>
+        <div class="audio-info">
+            <div class="audio-title">菊花台</div>
+            <div class="audio-caption">
+                <span>作词人：倪占军</span>
+                <span>编曲：金光旭</span>
+            </div>
+        </div>
     </div>
 </template>
 <style lang="less" scoped>
@@ -40,6 +47,18 @@
                 background-image: url('~@static/images/play.png');
                 border: 5px solid transparent;
                 cursor: pointer;
+            }
+        }
+        .audio-info {
+            color: @text-color;
+            .audio-title {
+                font-size: @font-size-md;
+                font-weight: bold;
+                padding: 10px 0;
+            }
+            .audio-caption {
+                font-size: @font-size-sm;
+                padding-bottom: 10px;
             }
         }
         &:hover {

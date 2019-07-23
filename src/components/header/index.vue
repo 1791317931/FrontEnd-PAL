@@ -55,10 +55,20 @@
 </script>
 
 <style lang="less" scoped>
+    @keyframes move {
+        from {
+            left: 0;
+        }
+        to {
+            left: 124px;
+        }
+    }
     header {
         background-color: @bg-header;
         padding: 20px 0;
         margin-bottom: 20px;
+        position: sticky;
+        top: 0;
         .header-content {
             display: flex;
             align-items: center;
@@ -68,8 +78,31 @@
             .size(208px, 30px);
             .bg-size();
             font-size: 0;
-            background-image: url('~@static/images/logo-black.png');
             margin-right: 60px;
+            position: relative;
+            &:before {
+                .size(84px, 18px);
+                .bg-size(100%);
+                position: absolute;
+                content: '';
+                background-image: url('~@static/images/logo-line.png');
+                bottom: 0;
+                left: 0;
+                transition: .4s ease left, .4s ease width;
+            }
+            &:after {
+                .size(208px, 30px);
+                .bg-size();
+                position: absolute;
+                content: '';
+                background-image: url('~@static/images/logo-black.png');
+            }
+            &:hover {
+                &:before {
+                    left: 84px;
+                    width: 124px;
+                }
+            }
         }
         nav {
             ul {
