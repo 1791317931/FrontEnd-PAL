@@ -1,5 +1,3 @@
-import Layout from '../view/layout/'
-
 import Home from '../view/home/'
 
 export default [{
