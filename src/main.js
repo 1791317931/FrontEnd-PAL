@@ -6,10 +6,12 @@ import routes from './route'
 import store from './store'
 import App from './view/app'
 import './static/less/'
+import iview from 'iview'
 
 Vue.use(VueRouter)
 
 Vue.prototype.$axios = http
+Vue.use(iview)
 const router = new VueRouter({ // 创建路由
     mode: 'hash',
     routes
