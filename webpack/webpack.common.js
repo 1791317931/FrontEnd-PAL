@@ -53,7 +53,10 @@ function createCssAndLessLoader() {
                 ]
             }
         },
-        'less-loader',
+        {
+            loader: 'less-loader',
+            options: { javascriptEnabled: true }
+        },
         {
             loader: 'style-resources-loader',
             options: {
@@ -109,7 +112,8 @@ module.exports = {
                 loader: 'happypack/loader?id=happy-babel-js',
                 include: [
                     APP_SRC,
-                    resolve('/node_modules/yyzone/src')
+                    resolve('/node_modules/yyzone/src'),
+                    resolve('/node_modules/iview/src')
                 ]
             },
             {
@@ -118,7 +122,8 @@ module.exports = {
                 options: vueLoaderConfig,
                 include: [
                     APP_SRC,
-                    resolve('/node_modules/yyzone/src')
+                    resolve('/node_modules/yyzone/src'),
+                    resolve('/node_modules/iview/src')
                 ]
             },
             {
