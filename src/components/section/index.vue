@@ -6,7 +6,7 @@
             </div>
             <div class="more" v-if="path" @click="goToLink">更多</div>
         </h2>
-        <div class="article">
+        <div class="content">
             <slot></slot>
         </div>
     </div>
@@ -48,14 +48,14 @@
             .title {
                 flex: 1;
                 font-size: @font-size-lg;
-                font-weight: 500;
+                font-weight: bold;
             }
             .more {
                 font-weight: 300;
                 font-size: @font-size-sm;
             }
         }
-        .article {
+        .content {
             .clearfix();
             padding: 0 10px;
         }

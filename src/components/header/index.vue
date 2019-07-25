@@ -69,6 +69,7 @@
         margin-bottom: 20px;
         position: sticky;
         top: 0;
+        z-index: 999;
         .header-content {
             display: flex;
             align-items: center;

@@ -50,7 +50,6 @@
             }
         }
         .audio-info {
-            color: @text-color;
             .audio-title {
                 font-size: @font-size-md;
                 font-weight: bold;
