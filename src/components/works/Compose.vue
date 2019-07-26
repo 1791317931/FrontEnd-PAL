@@ -26,6 +26,7 @@
     .info-row {
         margin-top: 30px;
         background: #fff;
+        padding: 0 0 30px;
         .title {
             padding: 0 0 0 30px;
             line-height: 60px;
@@ -36,21 +37,47 @@
             color:rgba(16,16,16,1);
         }
         .custom-form {
-            padding: 30px 0 80px 56px;
+            padding: 30px 0 0 56px;
             > div {
                 position: relative;
-                &:before {
-                    content: '';
-                    width:6px;
-                    height:6px;
-                    background:rgba(194,43,35,1);
-                    border-radius: 50%;
-                    position: absolute;
-                    top: 0;
-                    left: -20px;
-                }
                 &:not(:first-child) {
                     margin-top: 40px;
+                }
+                &.dot {
+                    &:before {
+                        content: '';
+                        width:6px;
+                        height:6px;
+                        background:rgba(194,43,35,1);
+                        border-radius: 50%;
+                        position: absolute;
+                        top: 0;
+                        left: -20px;
+                    }
+                }
+            }
+        }
+        &.dot {
+            .custom-form {
+                > div {
+                    &:before {
+                        content: '';
+                        width:6px;
+                        height:6px;
+                        background:rgba(194,43,35,1);
+                        border-radius: 50%;
+                        position: absolute;
+                        top: 0;
+                        left: -20px;
+                    }
+                }
+            }
+        }
+        &.other-info {
+            .custom-form {
+                padding-top: 40px;
+                > div {
+                    width: 960px;
                 }
             }
         }

@@ -1,23 +1,17 @@
 <template>
     <div class="content-container">
-        <div class="head">音乐作品</div>
-        <WorksCompose class="dot info">
+        <div class="head">beat商城</div>
+        <WorksCompose class="dot">
             <template slot="title">作品信息</template>
             <template>
                 <div class="name">
-                    <Input v-model="form.name" placeholder="歌曲名称" />
+                    <Input v-model="form.name" placeholder="beat名称" />
                     <span class="spare-name">20</span>
                 </div>
-                <div class="clearfix">
-                    <div class="pull-left category">
-                        <Select v-model="form.categoryId" placeholder="选择作品风格类型">
+                <div>
+                    <div class="category">
+                        <Select v-model="form.categoryId" placeholder="选择Beat风格类型">
                             <Option v-for="item in categoryList" :key="item.id" :value="item.id">{{item.text}}</Option>
-                        </Select>
-                    </div>
-                    <div class="pull-left original">
-                        <Select v-model="form.original" placeholder="选择属性">
-                            <Option :value="1">原唱</Option>
-                            <Option :value="2">翻唱</Option>
                         </Select>
                     </div>
                 </div>
@@ -33,27 +27,20 @@
                 </div>
             </template>
         </WorksCompose>
-        <WorksCompose class="other-info">
-            <template slot="title">其他信息</template>
+        <WorksCompose>
+            <template slot="title">上传信息</template>
             <template>
-                <div>
-                    <Input v-model="form.singer" placeholder="演唱" />
-                </div>
-                <div>
-                    <Input v-model="form.author" placeholder="作词" />
-                </div>
-                <div>
-                    <Input v-model="form.composer" placeholder="作曲" />
-                </div>
-                <div>
-                    <Input v-model="form.editor" placeholder="编曲" />
-                </div>
-                <div>
-                    <Input v-model="form.lyric" placeholder="歌词(可以为空)" type="textarea" class="music-lyric" :rows="5" />
-                </div>
-                <div>
-                    <Input v-model="form.description" placeholder="歌曲简介(可以为空)" type="textarea" class="music-description" :rows="7" :maxlength="120" />
-                    <span class="description-spare-count">0/120</span>
+                <div class="dot clearfix">
+                    <div class="input-container">
+                        <div>
+                            <Input v-model="form.mp3" placeholder="上传.MP3（租用）/点击上传MP3格式音频" />
+                        </div>
+                        <Button>免费</Button>
+                        <div>.MP3格式默认免费可更改价格</div>
+                    </div>
+                    <div class="pull-left">
+                        123
+                    </div>
                 </div>
                 <div class="agreement">
                     <Checkbox v-model="agree">
@@ -81,14 +68,7 @@
                 form: {
                     name: '',
                     categoryId: null,
-                    // 是否原唱
-                    original: -1,
-                    singer: '',
-                    author: '',
-                    composer: '',
-                    editor: '',
-                    lyric: '',
-                    description: ''
+                    mp3: null
                 },
                 categoryList: [],
                 covers: [],
@@ -128,7 +108,7 @@
 
             },
             back() {
-
+                
             }
         }
     }
@@ -145,52 +125,65 @@
             line-height: 82px;
             background:rgba(255,255,255,1);
         }
-        .info {
-            padding-bottom: 80px;
-            .name {
-                width: 900px;
-                .spare-name {
-                    position: absolute;
-                    top: 50%;
-                    right: 20px;
-                    font-size:14px;
-                    font-family:PingFangSC-Regular;
-                    font-weight:400;
-                    color:rgba(153,153,153,1);
-                    transform: translateY(-50%);
-                }
-            }
-            .category {
-                width: 210px;
-            }
-            .original {
-                width: 210px;
-                margin-left: 30px;
-            }
-        }
-        .other-info {
-            padding-bottom: 100px;
-            .description-spare-count {
+        .name {
+            width: 900px;
+            .spare-name {
                 position: absolute;
+                top: 50%;
                 right: 20px;
-                bottom: 10px;
                 font-size:14px;
                 font-family:PingFangSC-Regular;
                 font-weight:400;
                 color:rgba(153,153,153,1);
+                transform: translateY(-50%);
             }
-            .agreement {
-                .item {
-                    font-size:14px;
+        }
+        .category {
+            width: 210px;
+        }
+        .input-container {
+            width: 100%;
+            float: left;
+            > div {
+                &:first-child {
+                    float: left;
+                    width: 860px;
+                }
+                &:last-child {
+                    float: left;
+                    margin-left: 10px;
+                    font-size:12px;
                     font-family:PingFangSC-Regular;
                     font-weight:400;
-                    color:rgba(16,16,16,1);
-                    &.item-1 {
-                        padding-left: 10px;
-                    }
-                    &.item-2 {
-                        color: #0BE79E;
-                    }
+                    color:rgba(187,187,187,1);
+                    line-height:44px;
+                }
+            }
+            button {
+                float: left;
+                width: 136px;
+                height: 44px;
+                margin-left: 20px;
+                background:rgba(244,244,244,1);
+                border-radius:4px;
+                border:1px solid rgba(221,221,221,1);
+                font-size:14px;
+                font-family:PingFangSC-Regular;
+                font-weight:400;
+                color:rgba(194,43,35,1);
+            }
+        }
+        .agreement {
+            .item {
+                font-size:14px;
+                font-family:PingFangSC-Regular;
+                font-weight:400;
+                color:rgba(16,16,16,1);
+                &.item-1 {
+                    padding-left: 10px;
+                }
+                &.item-2 {
+                    color: #0BE79E;
                 }
             }
         }
