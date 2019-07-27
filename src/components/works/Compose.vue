@@ -39,6 +39,7 @@
         .custom-form {
             padding: 30px 0 0 56px;
             > div {
+                display: flex;
                 position: relative;
                 &:not(:first-child) {
                     margin-top: 40px;
@@ -88,6 +89,11 @@
                         margin-top: 30px;
                     }
                 }
+            }
+        }
+        &.article-container {
+            .custom-form {
+                padding-left: 0;
             }
         }
     }

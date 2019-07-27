@@ -83,7 +83,8 @@ module.exports = {
             '@src': APP_SRC,
             '@components': '@src/components',
             '@view': '@src/view',
-            '@static': '@src/static'
+            '@static': '@src/static',
+            'jquery': path.resolve(__dirname, '../node_modules/jquery/src/jquery')
         },
         extensions: ['.js', '.vue', '.css', '.less', '.json', '.scss']
     },

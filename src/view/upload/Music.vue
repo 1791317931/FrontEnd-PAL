@@ -28,7 +28,7 @@
             <template>
                 <div>
                     <div class="upload-container">
-                        <Upload :data="covers" :maxCount="1" :maxSize="3*1024*1024" accept="image/jpg,image/jpeg,image/gif,image/png" @on-result-change="changeCover" />
+                        <ImgUpload :data="covers" :maxCount="1" :maxSize="3*1024*1024" accept="image/jpg,image/jpeg,image/gif,image/png" @on-result-change="changeCover" />
                     </div>
                 </div>
             </template>
@@ -70,11 +70,11 @@
 </template>
 <script>
     import WorksCompose from '@components/works/Compose'
-    import Upload from '@components/common/Upload.vue'
+    import ImgUpload from '@components/common/ImgUpload.vue'
     export default {
         components: {
             WorksCompose,
-            Upload
+            ImgUpload
         },
         data() {
             return {

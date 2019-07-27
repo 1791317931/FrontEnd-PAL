@@ -67,9 +67,12 @@
 	"dependencies": {
 		"@babel/polyfill": "^7.0.0",
 		"axios": "^0.16.1",
+		"bootstrap": "^4.3.1",
 		"es6-promise": "^4.2.4",
 		"iview": "^3.4.2",
+		"jquery": "^3.4.1",
 		"js-cookie": "^2.2.0",
+		"summernote": "^0.8.12",
 		"vue": "^2.5.17",
 		"vue-router": "^3.0.2",
 		"vuex": "^2.3.1"
