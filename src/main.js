@@ -8,8 +8,11 @@ import App from './view/app'
 import './static/less/'
 import iview from 'iview'
 
+import tipUtil from '@src/utils/tipUtil'
+
 Vue.use(VueRouter)
 
+Vue.prototype.tipUtil = tipUtil
 Vue.prototype.$axios = http
 Vue.use(iview)
 const router = new VueRouter({ // 创建路由

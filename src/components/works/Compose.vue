@@ -81,5 +81,14 @@
                 }
             }
         }
+        &.beat-container {
+            .custom-form {
+                > div {
+                    &:not(:first-child) {
+                        margin-top: 30px;
+                    }
+                }
+            }
+        }
     }
 </style>
