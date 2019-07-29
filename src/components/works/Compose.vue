@@ -93,6 +93,7 @@
         }
         &.article-container {
             .custom-form {
+                padding-top: 0;
                 padding-left: 0;
             }
         }

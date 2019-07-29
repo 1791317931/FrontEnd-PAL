@@ -36,7 +36,14 @@
         <WorksCompose class="article-container">
             <template slot="title">文章内容</template>
             <template>
-                <div id="summernote"></div>
+                <div>
+                    <quill-editor
+                        v-model="form.content"
+                        ref="myQuillEditor"
+                        class="rich-text"
+                        :options="editorOption"
+                    />
+                </div>
             </template>
         </WorksCompose>
         <div class="operation-container">
@@ -48,13 +55,25 @@
     import WorksCompose from '@components/works/Compose'
     import ImgUpload from '@components/common/ImgUpload.vue'
     import FileUpload from '@view/upload/fileUpload'
-    import 'bootstrap/js/modal.js'
-    import 'bootstrap/js/modal.js'
-    import 'bootstrap/js/modal.js'
-    import 'summernote'
-    import 'summernote/dist/lang/summernote-zh-CN.js'
-    import 'summernote/dist/summernote.css'
-    import 'jquery'
+    import 'quill/dist/quill.core.css'
+    import 'quill/dist/quill.snow.css'
+    import 'quill/dist/quill.bubble.css'
+
+    const toolbarOptions = [
+      ['bold', 'italic', 'underline', 'strike'], // 加粗 斜体 下划线 删除线 -----['bold', 'italic', 'underline', 'strike']
+      ['blockquote', 'code-block'], // 引用  代码块-----['blockquote', 'code-block']
+      [{ header: 1 }, { header: 2 }], // 1、2 级标题-----[{ header: 1 }, { header: 2 }]
+      [{ list: 'ordered' }, { list: 'bullet' }], // 有序、无序列表-----[{ list: 'ordered' }, { list: 'bullet' }]
+      // [{ script: 'sub' }, { script: 'super' }], // 上标/下标-----[{ script: 'sub' }, { script: 'super' }]
+      [{ indent: '-1' }, { indent: '+1' }], // 缩进-----[{ indent: '-1' }, { indent: '+1' }]
+      [{ size: ['small', false, 'large', 'huge'] }], // 字体大小-----[{ size: ['small', false, 'large', 'huge'] }]
+      [{ header: [1, 2, 3, 4, 5, 6, false] }], // 标题-----[{ header: [1, 2, 3, 4, 5, 6, false] }]
+      [{ color: [] }, { background: [] }], // 字体颜色、字体背景颜色-----[{ color: [] }, { background: [] }]
+      [{ font: ['SimSun','SimHei', 'Microsoft-YaHei', 'KaiTi'] }], // 字体种类-----[{ font: [] }]
+      [{ align: [] }], // 对齐方式-----[{ align: [] }]
+      ['image'] // 链接、图片、视频-----['link', 'image', 'video']
+    ]
+
     export default {
         components: {
             WorksCompose,
@@ -65,25 +84,27 @@
             return {
                 form: {
                     name: '',
-                    categoryId: null
+                    categoryId: null,
+                    content: ''
                 },
                 categoryList: [],
                 covers: [],
-                agree: false
+                agree: false,
+                editorOption: {
+                    placeholder: '快来写点什么吧',
+                    theme: 'snow',
+                    modules: {
+                      toolbar: {
+                        container: toolbarOptions
+                      }
+                    }
+                }
             }
         },
         beforeMount() {
             this.getCategoryList()
         },
-        mounted() {
-            this.init()
-        },
         methods: {
-            init() {
-                $('#summernote').summernote({
-
-                })
-            },
             getCategoryList() {
                 setTimeout(() => {
                     this.categoryList = [
