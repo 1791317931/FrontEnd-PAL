@@ -47,7 +47,7 @@
             </template>
         </WorksCompose>
         <div class="operation-container">
-            <Button type="primary" @click="submit">立即发布</Button>
+            <Button type="primary" @click="submit">发布</Button>
         </div>
     </div>
 </template>
