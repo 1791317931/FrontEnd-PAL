@@ -15,6 +15,7 @@ Vue.use(VueRouter)
 
 Vue.prototype.tipUtil = tipUtil
 Vue.prototype.$axios = http
+Vue.prototype.$event = new Vue()
 Vue.use(iview)
 Vue.use(VueQuillEditor)
 const router = new VueRouter({ // 创建路由

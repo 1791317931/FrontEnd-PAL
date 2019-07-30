@@ -184,7 +184,7 @@ module.exports = {
             chunkFilename: "css/[id].css",
         }),
         new HtmlWebpackPlugin({
-            favicon: resolve('/src/template/favicon.ico'),
+            favicon: resolve('/src/template/favicon.png'),
             template: resolve('/src/template/index.html')
         })
     ],
