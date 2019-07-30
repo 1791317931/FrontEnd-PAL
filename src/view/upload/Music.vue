@@ -57,8 +57,9 @@
                 </div>
                 <div class="agreement">
                     <Checkbox v-model="agree">
-                        <span class="item item-1">我已阅读并同意</span><span class="item item-2">《PAL Music音乐人服务条款》</span>
+                        <span class="item item-1">我已阅读并同意</span>
                     </Checkbox>
+                    <span class="item item-2">《PAL Music音乐人服务条款》</span>
                 </div>
             </template>
         </WorksCompose>
