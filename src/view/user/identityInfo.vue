@@ -34,7 +34,6 @@
     export default {
         data() {
             return {
-                activeName: '3',
                 hasIdentitied: true,
                 form: {
                     status: '审核已通过',

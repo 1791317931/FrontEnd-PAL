@@ -6,19 +6,25 @@
             <MenuItem name="3">身份认证</MenuItem>
         </Menu>
         <div class="edit-container">
+            <BaseInfo v-if="activeName == '1'"/>
+            <SafeInfo v-if="activeName == '2'"/>
             <IdentityInfo v-if="activeName == '3'"/>
         </div>
     </div>
 </template>
 <script>
+    import BaseInfo from '@view/user/baseInfo'
     import IdentityInfo from '@view/user/identityInfo'
+    import SafeInfo from '@view/user/safeInfo'
     export default {
         components: {
-            IdentityInfo
+            BaseInfo,
+            IdentityInfo,
+            SafeInfo
         },
         data() {
             return {
-                activeName: '3'
+                activeName: '1'
             }
         },
         methods: {
