@@ -8,10 +8,25 @@ import UploadArticle from '../view/upload/article'
 
 import UserInfo from '../view/user/userInfo'
 
+import BeatShop from '../view/beat-shop/' // beat商城
+import Article from '../view/article/'    // 文章
+import Music from '../view/music/'        // 音乐
 export default [{
     path: '/',
     component: Home,
     name: 'Home',
+}, {
+    path: '/beat-shop',
+    component: BeatShop,
+    name: 'BeatShop',
+}, {
+    path: '/article',
+    component: Article,
+    name: 'Article'
+}, {
+    path: '/music',
+    component: Music,
+    name: 'Music',
 }, {
     path: '/upload/music',
     component: UploadMusic,

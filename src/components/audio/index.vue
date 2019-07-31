@@ -12,9 +12,24 @@
                 <span>作词人：倪占军</span>
                 <span>编曲：金光旭</span>
             </div>
+            <div class="audio-price" v-if="showPrice">
+                ¥235.00
+            </div>
         </div>
     </div>
 </template>
+<script>
+    export default {
+        name: 'Audio',
+        props: {
+            showPrice: {
+                type: Boolean,
+                default: false
+            }
+        }
+    }
+</script>
+
 <style lang="less" scoped>
     .audio {
         float: left;
