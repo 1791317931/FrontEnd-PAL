@@ -22,10 +22,11 @@
                     技能验证<span>建议输入2-5个字符最多三个标签</span>
                 </div>
                 <div class="skill-container">
-                    <div v-for="item in skills" :key="item.value" v-show="form.skills.indexOf(item.value) != -1" @click="cancleItem(item.value)">{{item.text}}</div>
+                    <div v-for="item in skills" class="item" :key="item.value" v-show="form.skills.indexOf(item.value) != -1" @click="cancleItem(item.value)">{{item.text}}</div>
+                    <Input v-model="skill" class="edit-input" placeholder="输入后回车添加标签" :maxlength="10" @on-keydown="labelKeydown"/>
                 </div>
-                <div class="all-skill-container">
-                    <div v-for="item in skills" :key="item.value" v-show="form.skills.indexOf(item.value) == -1" @click="addItem(item.value)">
+                <div class="all-skill-container clearfix">
+                    <div v-for="item in skills" :key="item.value" @click="addItem(item.value)">
                         {{item.text}}<span></span>
                     </div>
                 </div>
@@ -73,7 +74,8 @@
                         value: 7,
                         text: 'Trap'
                     }
-                ]
+                ],
+                skill: ''
             }
         },
         beforeMount() {
@@ -88,7 +90,22 @@
                 list.splice(list.indexOf(value), 1)
             },
             addItem(value) {
-                this.form.skills.push(value)
+                let list = this.form.skills
+                if (list.indexOf(value) == -1) {
+                    list.push(value)
+                }
+            },
+            labelKeydown(e) {
+                if (e.keyCode == 13) {
+                    let id = Date.now() + ''
+                    let item = {
+                        value: id,
+                        text: this.skill
+                    }
+                    this.form.skills.push(id)
+                    this.skills.push(item)
+                    this.skill = ''
+                }
             }
         }
     }
@@ -126,7 +143,7 @@
                         background:rgba(244,244,244,1);
                         border-radius:4px;
                         border:1px solid rgba(221,221,221,1);
-                        > div {
+                        .item {
                             float: left;
                             margin-left: 10px;
                             margin-bottom: 10px;
@@ -160,9 +177,19 @@
                                 transform: translateY(-50%) rotateZ(-45deg);
                             }
                         }
+                        .edit-input {
+                            width: 170px;
+                            float: left;
+                            margin-left: 10px;
+                            margin-bottom: 10px;
+                            height: 28px;
+                            font-size:16px;
+                            font-family:PingFangSC-Regular;
+                            color:rgba(16,16,16,1);
+                        }
                     }
                     &.all-skill-container {
-                        padding: 6px 6px;
+                        padding: 6px 2px;
                         > div {
                             float: left;
                             margin-right: 10px;

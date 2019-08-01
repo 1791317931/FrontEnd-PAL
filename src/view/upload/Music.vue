@@ -70,8 +70,8 @@
     </div>
 </template>
 <script>
-    import WorksCompose from '@components/works/Compose'
-    import ImgUpload from '@components/common/ImgUpload.vue'
+    import WorksCompose from '@components/works/'
+    import ImgUpload from '@components/common/img_upload.vue'
     export default {
         components: {
             WorksCompose,

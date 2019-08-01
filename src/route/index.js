@@ -1,12 +1,12 @@
 import Home from '../view/home/'
 
-import residenceAgreement from '../view/common/residenceAgreement'
+import ResidenceAgreement from '../view/residence/' // 入驻协议
 
-import UploadMusic from '../view/upload/music'
+import UploadMusic from '../view/upload/music'  // 上传音乐
 import UploadBeat from '../view/upload/beat'
 import UploadArticle from '../view/upload/article'
 
-import UserInfo from '../view/user/userInfo'
+import UserInfo from '../view/user/'    // 用户信息
 
 import BeatShop from '../view/beat-shop/' // beat商城
 import Article from '../view/article/'    // 文章
@@ -45,7 +45,7 @@ export default [{
     name: 'user-info',
 }, {
     path: '/residence',
-    component: residenceAgreement,
+    component: ResidenceAgreement,
     name: 'residence-agreement',
 }, {
     path: '*',
