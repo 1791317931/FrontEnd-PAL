@@ -13,9 +13,9 @@
     </div>
 </template>
 <script>
-    import BaseInfo from '@view/user/baseInfo'
-    import IdentityInfo from '@view/user/identityInfo'
-    import SafeInfo from '@view/user/safeInfo'
+    import BaseInfo from '@view/user/base_info'
+    import IdentityInfo from '@view/user/identity_info'
+    import SafeInfo from '@view/user/safe_info'
     export default {
         components: {
             BaseInfo,
