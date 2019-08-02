@@ -7,6 +7,7 @@ import UploadBeat from '../view/upload/beat'
 import UploadArticle from '../view/upload/article'
 
 import UserInfo from '../view/user/'    // 用户信息
+import Identity from '../view/user/identity'    // 用户认证
 
 import BeatShop from '../view/beat-shop/' // beat商城
 import Article from '../view/article/'    // 文章
@@ -43,6 +44,10 @@ export default [{
     path: '/user/info',
     component: UserInfo,
     name: 'user-info',
+}, {
+    path: '/user/identity',
+    component: Identity,
+    name: 'identity'
 }, {
     path: '/residence',
     component: ResidenceAgreement,

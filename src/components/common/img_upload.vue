@@ -18,9 +18,11 @@
         <div class="tip-container">
           <div class="to-add">点击添加图片</div>
           <div class="desc">
-            <div>支持jpg/gif/png/格式</div>
-            <div>封面大小(500*500像素)</div>
-            <div>不超过{{maxSize / 1024 / 1024}}MB</div>
+            <slot name="desc">
+              <div>支持jpg/gif/png/格式</div>
+              <div>封面大小(500*500像素)</div>
+              <div>不超过{{maxSize / 1024 / 1024}}MB</div>
+            </slot>
           </div>
         </div>
       </div>

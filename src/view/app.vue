@@ -4,7 +4,7 @@
         <router-view />
         <PalPlayer 
             ref="player"/>
-        <PalFooter />
+        <!-- <PalFooter /> -->
     </div>
 </template>
 <script>

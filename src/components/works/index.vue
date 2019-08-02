@@ -98,5 +98,16 @@
                 padding-left: 0;
             }
         }
+        &.identity {
+            position: relative;
+            padding-bottom: 40px;
+            .custom-form {
+                > div {
+                    &:not(:first-child) {
+                        margin-top: 20px;
+                    }
+                }
+            }
+        }
     }
 </style>
