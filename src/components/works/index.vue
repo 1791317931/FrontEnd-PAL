@@ -35,6 +35,7 @@
             font-family:PingFangSC-Medium;
             font-weight:500;
             color:rgba(16,16,16,1);
+            position: relative;
         }
         .custom-form {
             padding: 30px 0 0 56px;

@@ -1,7 +1,10 @@
 <template>
     <div class="content-container">
         <WorksCompose class="dot identity">
-            <template slot="title">技能认证</template>
+            <template slot="title">
+                <span>技能认证</span>
+                <span class="identity-tip">注：请认真填写内容不可填写假信息每人有3次审核机会</span>
+            </template>
             <template>
                 <div>
                     <div class="upload-container">
@@ -104,6 +107,13 @@
 
 <style lang="less" scoped>
     .content-container {
+        .identity-tip {
+            font-size:14px;
+            font-family:PingFangSC-Regular;
+            font-weight:400;
+            color:rgba(153,153,153,1);
+            margin-left: 30px;
+        }
         .upload-container {
             .upload-id-card-tip {
                 margin-top: 20px;

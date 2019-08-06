@@ -5,18 +5,24 @@
         <PalPlayer 
             ref="player"/>
         <!-- <PalFooter /> -->
+        <!-- <Regist/> -->
+        <!-- <Login/> -->
     </div>
 </template>
 <script>
     import PalHeader from '@components/header/'
     import PalFooter from '@components/footer/'
     import PalPlayer from '@components/audio/player'
+    import Regist from '@view/common/regist'
+    import Login from '@view/common/login'
 
     export default {
         components: {
             PalHeader, 
             PalFooter, 
-            PalPlayer
+            PalPlayer,
+            Regist,
+            Login
         },
         data() {
             return {

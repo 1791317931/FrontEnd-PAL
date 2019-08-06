@@ -8,6 +8,7 @@ import UploadArticle from '../view/upload/article'
 
 import UserInfo from '../view/user/'    // 用户信息
 import Identity from '../view/user/identity'    // 用户认证
+import IdentityWait from '../view/user/identity_wait'    // 用户认证
 
 import BeatShop from '../view/beat-shop/' // beat商城
 import Article from '../view/article/'    // 文章
@@ -52,6 +53,10 @@ export default [{
     path: '/residence',
     component: ResidenceAgreement,
     name: 'residence-agreement',
+}, {
+    path: '/user/identity/wait',
+    component: IdentityWait,
+    name: 'identity-wait',
 }, {
     path: '*',
     redirect: '/'

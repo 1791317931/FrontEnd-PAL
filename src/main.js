@@ -10,10 +10,13 @@ import iview from 'iview'
 import VueQuillEditor from 'vue-quill-editor'
 
 import tipUtil from '@src/utils/tipUtil'
+import formRuleValidator from '@src/utils/formRuleValidator'
 
 Vue.use(VueRouter)
 
 Vue.prototype.tipUtil = tipUtil
+Vue.prototype.formRuleValidator = formRuleValidator
+
 Vue.prototype.$axios = http
 Vue.prototype.$event = new Vue()
 Vue.use(iview)
