@@ -1,5 +1,5 @@
 <template>
-    <div class="beat-detail">
+    <div class="detail">
         <img class="cover" src="@static/images/banner.png"/>
         <div class="content">
             <div class="collection" @click="toggleCollection">
@@ -84,19 +84,19 @@
                         formats: [
                             {
                                 text: 'MP3租用',
-                                price: 100
+                                price: 101
                             },
                             {
                                 text: 'WAV租用',
-                                price: 100
+                                price: 102
                             },
                             {
                                 text: '分轨租用',
-                                price: 100
+                                price: 103
                             },
                             {
                                 text: '独家买断',
-                                price: 100
+                                price: 104
                             }
                         ],
                         isCollect: true,
@@ -154,7 +154,7 @@
 </script>
 <style lang="less" scoped>
     .mt10 {margin-top: 10px;}
-    .beat-detail {
+    .detail {
         display: flex;
         flex: 1;
         background: #fff;
@@ -361,6 +361,7 @@
                                 background: #fff;
                                 box-shadow:0px 0px 10px 0px rgba(0,0,0,0.13);
                                 z-index: 1001;
+                                cursor: auto;
                                 > div {
                                     &:first-child {
                                         margin-top: 22px;

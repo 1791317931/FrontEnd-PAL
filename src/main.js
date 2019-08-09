@@ -8,6 +8,8 @@ import App from './view/app'
 import './static/less/'
 import iview from 'iview'
 import VueQuillEditor from 'vue-quill-editor'
+import vuescroll from 'vuescroll';
+import 'vuescroll/dist/vuescroll.css';
 
 import tipUtil from '@src/utils/tipUtil'
 import formRuleValidator from '@src/utils/formRuleValidator'
@@ -20,6 +22,7 @@ Vue.prototype.formRuleValidator = formRuleValidator
 Vue.prototype.$axios = http
 Vue.prototype.$event = new Vue()
 Vue.use(iview)
+Vue.use(vuescroll);
 Vue.use(VueQuillEditor)
 const router = new VueRouter({ // 创建路由
     mode: 'hash',

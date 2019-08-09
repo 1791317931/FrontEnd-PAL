@@ -13,6 +13,8 @@ import IdentityWait from '../view/user/identity_wait'    // 用户认证
 import BeatShop from '../view/beat-shop/' // beat商城
 import Article from '../view/article/'    // 文章
 import Music from '../view/music/'        // 音乐
+import MusicDetail from '../view/music/music_detail'        // 音乐
+
 export default [{
     path: '/',
     component: Home,
@@ -29,6 +31,10 @@ export default [{
     path: '/music',
     component: Music,
     name: 'Music',
+}, {
+    path: '/music/detail',
+    component: MusicDetail,
+    name: 'music-detail',
 }, {
     path: '/upload/music',
     component: UploadMusic,

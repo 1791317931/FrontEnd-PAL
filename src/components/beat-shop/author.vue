@@ -1,6 +1,6 @@
 <template>
     <div class="author">
-        <div class="inner">
+        <div class="user">
             <div class="info">
                 <img class="avatar" src="@static/images/loading.gif"/>
                 <div class="name">AKA-老万</div>
@@ -18,12 +18,43 @@
                 </div>
             </div>
         </div>
+        <div v-if="showQrCode" class="qr-code">
+            <div class="title">下载客户端</div>
+            <div class="btn-group">
+                <div class="iphone" @click="toggleType('ios')">
+                    <img src="@static/images/ios.png"/>iPhone
+                </div>
+                <div class="android" @click="toggleType('android')">
+                    <img src="@static/images/android.png"/>Android
+                </div>
+            </div>
+            <div class="qr-code-container">
+                <img v-show="type == 'ios'" src="@static/images/loading.gif"/>
+                <img v-show="type == 'android'" src="@static/images/loading.gif"/>
+            </div>
+            <div class="tip">
+                扫码下载APP玩更多
+            </div>
+        </div>
     </div>
 </template>
 <script>
     export default {
+        props: {
+            showQrCode: {
+                type: Boolean,
+                default: false
+            }
+        },
         data() {
-            return {}
+            return {
+                type: 'ios'
+            }
+        },
+        methods: {
+            toggleType(type) {
+                this.type = type
+            }
         }
     }
 </script>
@@ -32,10 +63,10 @@
     .author {
         width: 290px;
         margin-left: 30px;
-        .inner {
+        .user {
             background: #fff;
+            padding: 40px 22px 0;
             .info {
-                padding: 40px 22px;
                 .avatar {
                     display: block;
                     width: 80px;
@@ -71,6 +102,7 @@
                     font-family:PingFangSC-Regular;
                     font-weight:400;
                     color:rgba(255,255,255,1);
+                    cursor: pointer;
                 }
             }
             .list {
@@ -99,6 +131,64 @@
                         line-height:16px;
                     }
                 }
+            }
+        }
+        .qr-code {
+            background: #fff;
+            margin-top: 30px;
+            height: 390px;
+            padding: 20px 20px 0;
+            .title {
+                font-size:24px;
+                font-family:PingFangSC-Semibold;
+                font-weight:600;
+                color:rgba(16,16,16,1);
+                line-height:33px;
+            }
+            .btn-group {
+                margin-top: 23px;
+                > div {
+                    width:119px;
+                    line-height:40px;
+                    font-size:14px;
+                    font-family:PingFangSC-Regular;
+                    font-weight:400;
+                    color:rgba(255,255,255,1);
+                    display: inline-block;
+                    position: relative;
+                    padding: 0 0 0 46px;
+                    cursor: pointer;
+                    img {
+                        position: absolute;
+                        top: 50%;
+                        left: 28px;
+                        transform: translateY(-50%);
+                    }
+                    &:first-child {
+                        background:rgba(103,185,235,1);
+                    }
+                    &:last-child {
+                        float: right;
+                        background:rgba(134,216,101,1);
+                    }
+                }
+            }
+            .qr-code-container {
+                margin-top: 28px;
+                text-align: center;
+                img {
+                    width: 154px;
+                    height: 154px;
+                }
+            }
+            .tip {
+                margin-top: 18px;
+                text-align: center;
+                font-size:14px;
+                font-family:PingFangSC-Regular;
+                font-weight:400;
+                color:rgba(255,76,76,1);
+                line-height:20px;
             }
         }
     }

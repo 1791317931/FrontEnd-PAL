@@ -27,7 +27,7 @@
                     },
                     {
                         name: 'Beat商城',
-                        path: '/'
+                        path: '/beat-shop'
                     },
                     {
                         name: '文章',
