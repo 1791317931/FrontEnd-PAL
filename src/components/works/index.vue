@@ -86,6 +86,7 @@
         &.beat-container {
             .custom-form {
                 > div {
+                    display: block;
                     &:not(:first-child) {
                         margin-top: 30px;
                     }

@@ -5,7 +5,7 @@
         <PalPlayer 
             ref="player"/>
         <!-- <PalFooter /> -->
-        <!-- <Regist/> -->
+        <Regist/>
         <!-- <Login/> -->
     </div>
 </template>

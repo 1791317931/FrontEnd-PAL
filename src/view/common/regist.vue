@@ -3,26 +3,26 @@
         <div class="inner">
           <div class="title">账号注册</div>
           <div class="close"></div>
-          <Form ref="edit-form" :model="form" :label-width="0" :rules="formRule" class="form">
-            <FormItem class="row" prop="account">
+          <Form ref="edit-form" :model="form" @submit.prevent="onSubmit" :label-width="0" :rules="formRule" class="form">
+            <FormItem class="row" prop="mobile">
               <div class="row-title">账号</div>
-              <div class="row-content account-container">
-                <Input v-model="form.account" placeholder="请输入手机号" />
-                <span class="account-prefix">+86</span>
+              <div class="row-content mobile-container">
+                <Input v-model="form.mobile" placeholder="请输入手机号" />
+                <span class="mobile-prefix">+86</span>
               </div>
             </FormItem>
             <FormItem class="row" prop="imgCode">
               <div class="row-title">图形验证码</div>
               <div class="row-content verify-container">
-                <Input v-model="form.imgCode" placeholder="输入图形验证码" />
-                <img class="verify-code-btn" src="@static/images/banner.png" title="点击刷新" @click="getImgCode"/>
+                <Input v-model="imgCode" placeholder="输入图形验证码" :maxlength="5" />
+                <img class="verify-code-btn" :src="imgUrl" title="点击刷新" @click="getImgCode"/>
               </div>
             </FormItem>
-            <FormItem class="row" prop="verifyCode">
+            <FormItem class="row" prop="code">
               <div class="row-title">手机验证码</div>
               <div class="row-content verify-container">
-                <Input v-model="form.verifyCode" placeholder="输入手机验证码" />
-                <Button type="primary" class="verify-code-btn" @click="getVerifyCode">获取验证码</Button>
+                <Input v-model="form.code" placeholder="输入手机验证码" :maxlength="4" />
+                <Button type="primary" class="verify-code-btn" @click="getVerifyCode">{{loadingSmsCode ? smsCodeWaitTime + '秒后获取' : '获取验证码'}}</Button>
               </div>
             </FormItem>
             <FormItem class="row" prop="password">
@@ -31,10 +31,10 @@
                 <Input v-model="form.password" type="password" placeholder="请输入密码" />
               </div>
             </FormItem>
-            <FormItem class="row" prop="confirmPassword">
+            <FormItem class="row" prop="password_confirmation">
               <div class="row-title">确认密码</div>
               <div class="row-content">
-                <Input v-model="form.confirmPassword" type="password" placeholder="请再次确认密码" />
+                <Input v-model="form.password_confirmation" type="password" placeholder="请再次确认密码" />
               </div>
             </FormItem>
             <FormItem class="row">
@@ -44,7 +44,7 @@
               </div>
             </FormItem>
             <div class="operation-container">
-              <Button type="primary" class="regist" @click="regist">注册</Button>
+              <Button :loading="submitting" type="primary" class="regist" @click="regist">注册</Button>
             </div>
             <div class="more-operation">
               <span>已有账号 |</span><span>马上登录</span>
@@ -54,39 +54,125 @@
     </div>
 </template>
 <script>
-    export default {
-        data() {
-          let Validator = this.formRuleValidator.Validator
-          return {
-            form: {
-              account: '',
-              imgCode: '',
-              verifyCode: '',
-              password: '',
-              confirmPassword: ''
-            },
-            formRule: {
-              account: Validator.getMobileRule(true),
-              imgCode: Validator.getRequiredRule(),
-              verifyCode: Validator.getRequiredRule(),
-              password: Validator.getRequiredRule(),
-              confirmPassword: Validator.getRequiredRule()
-            },
-            agree: true
-          }
+  export default {
+    data() {
+      let Validator = this.formRuleValidator.Validator
+      return {
+        form: {
+          mobile: '',
+          code: '',
+          password: '',
+          password_confirmation: ''
         },
-        methods: {
-          getImgCode() {
+        formRule: {
+          mobile: Validator.getMobileRule(true),
+          code: Validator.getRequiredRule(),
+          password: Validator.getRequiredRule(),
+          password_confirmation: Validator.getRequiredRule()
+        },
+        captchaUuid: '',
+        imgUrl: '',
+        imgCode: '',
+        loadingSmsCode: false,
+        // 短信获取间隔（秒）
+        SMSCODE_MAX_WAIT_TIME: 120,
+        smsCodeWaitTime: 0,
+        submitting: false,
+        agree: true
+      }
+    },
+    beforeMount() {
+      this.getImgCode()
+    },
+    methods: {
+      getImgCode() {
+        api.getCaptcha({
+          scene: 'default'
+        }).then(res => {
+          this.imgUrl = res.captchaUrl
+          this.captchaUuid = res.captchaUuid
+        })
+      },
+      onSubmit() {
+        return false
+      },
+      getVerifyCode() {
+        if (this.loadingSmsCode) {
+          return
+        }
 
-          },
-          getVerifyCode() {
+        let mobile = this.form.mobile.trim()
+        if (!mobile) {
+          this.tipUtil.warning('请输入手机号')
+          return
+        } else if (!this.formRuleValidator.isMobile(mobile)) {
+          this.tipUtil.warning('请输入正确格式的手机号')
+          return
+        }
 
-          },
-          regist() {
+        let imgCode = this.imgCode.trim()
+        if (!imgCode) {
+          this.tipUtil.warning('请输入图形验证码')
+          return
+        }
 
+        this.loadingSmsCode = true
+        this.smsCodeWaitTime = this.SMSCODE_MAX_WAIT_TIME
+
+        let fn = () => {
+          if (this.loadingSmsCode && this.smsCodeWaitTime > 1) {
+            --this.smsCodeWaitTime
+            setTimeout(() => {
+              fn()
+            }, 1000)
+          } else {
+            this.loadingSmsCode = false
           }
         }
+        fn()
+
+        api.getSmscode({
+          phoneNumber: mobile,
+          captchaUuid: this.captchaUuid,
+          captcha: imgCode,
+          scene: 'register'
+        }).then(res => {
+          this.form.code = res.codeUuid
+          this.loadingSmsCode = false
+        }).catch(() => {
+          this.loadingSmsCode = false
+        })
+      },
+      regist() {
+        this.$refs['edit-form'].validate(valid => {
+          if (valid) {
+            debugger
+            let form = this.objectUtil.copyObject(this.form)
+            let tipUtil = this.tipUtil
+
+            if (form.password.length < 8) {
+              tipUtil.warning('密码长度至少8位')
+              return
+            }
+
+            if (form.password != form.password_confirmation) {
+              tipUtil.warning('密码与确认密码不一致，请重新输入')
+              return
+            }
+
+            form.captchaUuid = this.captchaUuid
+            this.submitting = true
+            api.regist(form).then(res => {
+              this.submitting = false
+              tipUtil.success('注册成功')
+            }).catch(() => {
+              this.submitting = false
+            })
+          }
+        })
+      }
     }
+  }
 </script>
 
 <style lang="less" scoped>
@@ -165,7 +251,7 @@
             > div {
               flex: 1;
             }
-            &.account-container /deep/ input {
+            &.mobile-container /deep/ input {
               padding-left: 75px;
             }
             &.verify-container {
@@ -184,7 +270,7 @@
               background:rgba(244,244,244,1);
               border-radius:4px;
             }
-            .account-prefix {
+            .mobile-prefix {
               position: absolute;
               top: 50%;
               left: 0;

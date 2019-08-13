@@ -1,11 +1,13 @@
 import axios from 'axios'
 import store from '../store'
 import { getToken } from '../utils/auth'
+import tipUtil from '@src/utils/tipUtil'
 
 const BASE_URL = 'http://localhost:8081'
 axios.defaults.timeout = 5000 * 4
 axios.interceptors.request.use(
     config => {
+        config.headers['rapper-device-type'] = 'pc'
         config.withCredentials = true
         let url = config.url
 
@@ -30,10 +32,33 @@ axios.interceptors.request.use(
 
 axios.interceptors.response.use(
     response => {
-        return response
+        if (response.status == 200) {
+            let data = response.data;
+            let code = data.code
+
+            if (!code) {
+                return Promise.resolve(data)
+            }
+            
+            if (code == 401) {
+              // util.toLogin();
+            } else {
+              tipUtil.error(data.message)
+              return Promise.reject(response);
+            }
+        } else {
+            tipUtil.error(response.data.message)
+            return Promise.reject(response);
+        }
     },
     error => {
-        return Promise.reject(error)
+        if (error.code == 'ECONNABORTED') {
+            tipUtil.error('连接超时');
+        } else if (error.response && error.response.status == 504) {
+            tipUtil.error('连接超时');
+        } else if (util.isOnLine()) {
+            tipUtil.error('请检测网络连接');
+        }
     }
 )
 

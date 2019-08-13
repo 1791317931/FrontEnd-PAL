@@ -10,6 +10,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 const HappyPack = require('happypack')
 const utils = require('./utils')
+const config = require('./config')
 
 const APP_ROOT = path.resolve(__dirname, '../')
 
@@ -159,6 +160,7 @@ module.exports = {
         new VueLoaderPlugin(),
         new webpack.DefinePlugin({
             __ENV__: JSON.stringify(NODE_ENV),
+            ENV: JSON.stringify(config[NODE_ENV])
         }),
         utils.createHappyPlugin('happy-babel-js', [{
             loader: 'babel-loader',

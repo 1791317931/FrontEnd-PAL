@@ -114,7 +114,7 @@
 <script>
     import WorksCompose from '@components/works/'
     import ImgUpload from '@components/common/img_upload.vue'
-    import FileUpload from '@view/upload/file_upload'
+    import FileUpload from '@components/common/file_upload'
     export default {
         components: {
             WorksCompose,
